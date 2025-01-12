@@ -4,6 +4,9 @@
   "scripts": {
     "start": "meteor run"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.2",
     "@blueprintjs/core": "^3.35.0",
