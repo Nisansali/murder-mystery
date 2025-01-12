@@ -1,5 +1,5 @@
-# Use Node.js 12 on Debian Bullseye (amd64)
-FROM --platform=linux/amd64 node:12-bullseye
+# Use Node.js 12 on Debian Bullseye (default to 64-bit architecture)
+FROM node:12-bullseye
 
 # Set the working directory
 WORKDIR /app
@@ -10,12 +10,11 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # Install Meteor globally
+ENV METEOR_ALLOW_SUPERUSER=true
 RUN curl https://install.meteor.com/ | sh
 
 # Copy project files into the container
 COPY . /app
-
-ENV METEOR_ALLOW_SUPERUSER=true
 
 # Install project dependencies
 RUN meteor npm install
