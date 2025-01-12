@@ -1,0 +1,4 @@
+app = "Breadcrumbsmurder-mystery"
+primary_region = "iad" 
+[build]
+  dockerfile = "Dockerfile"
