@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: my-meteor-app
+    env: node
+    buildCommand: meteor npm install
+    startCommand: meteor --production
+    plan: free
