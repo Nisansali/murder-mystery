@@ -2,8 +2,7 @@
   "name": "name",
   "private": true,
   "scripts": {
-    "render-build": "curl https://install.meteor.com/ | sh && export PATH=$HOME/.meteor:$PATH && meteor npm install && meteor build --directory ./.output",
-    "start": "cd ./.output/bundle/programs/server && npm install && cd ../../.. && node main.js"
+    "start": "meteor run"
   },
   "engines": {
     "node": "12.x"
