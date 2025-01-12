@@ -1,27 +1,27 @@
-# Use an official Node.js base image
-FROM node:14-buster
+# Use Node.js 12 on Debian Bullseye (amd64)
+FROM --platform=linux/amd64 node:12-bullseye
 
-# Install Meteor
-RUN curl https://install.meteor.com/ | sh
-
-# Create app directory
+# Set the working directory
 WORKDIR /app
 
-# Copy app files into the container
+# Install basic build tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && apt-get clean
+
+# Install Meteor globally
+RUN curl https://install.meteor.com/ | sh
+
+# Copy project files into the container
 COPY . /app
 
-# Install NPM dependencies
+ENV METEOR_ALLOW_SUPERUSER=true
+
+# Install project dependencies
 RUN meteor npm install
 
-# Build the Meteor bundle
-RUN meteor build --directory /build
-
-# Install dependencies in the bundle
-WORKDIR /build/bundle/programs/server
-RUN npm install
-
-# Expose port 3000
+# Expose default Meteor port
 EXPOSE 3000
 
-# Start the app
-CMD ["node", "/build/bundle/main.js"]
+# Command to run the app
+CMD ["meteor", "run", "--port", "3000", "--allow-superuser"]
