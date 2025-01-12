@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: my-meteor-app
+    name: murder-mystery
     env: node
     buildCommand: meteor npm install
     startCommand: meteor --production
