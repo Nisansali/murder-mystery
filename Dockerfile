@@ -24,4 +24,4 @@ RUN meteor npm install
 EXPOSE 3000
 
 # Command to run the app
-CMD ["meteor", "run", "--port", "3000", "--allow-superuser"]
+CMD ["meteor", "run", "--port", "0.0.0.0:3000", "--allow-superuser"]
